@@ -3,17 +3,17 @@ package "perl-Switch"
 package "perl-Sys-Syslog"
 package "perl-LWP-Protocol-https"
 
-remote_file "~/CloudWatchMonitoringScripts-v1.1.0.zip" do
+remote_file "/tmp/CloudWatchMonitoringScripts-v1.1.0.zip" do
   source "http://ec2-downloads.s3.amazonaws.com/cloudwatch-samples/CloudWatchMonitoringScripts-v1.1.0.zip"
 end
 
 bash "unzipScript" do
   code <<-EOS
-  unzip ~/CloudWatchMonitoringScripts-v1.1.0.zip -d /etc
+  unzip /tmp/CloudWatchMonitoringScripts-v1.1.0.zip -d /etc
   EOS
 end
 
-file "~/CloudWatchMonitoringScripts-v1.1.0.zip" do
+file "/tmp/CloudWatchMonitoringScripts-v1.1.0.zip" do
   action :delete
 end
 
