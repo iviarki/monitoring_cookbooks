@@ -32,5 +32,5 @@ end
 Chef::Log.info("FreeSpaceMonitor: Add Cron Job")
 cron "freespaceMetric" do
   minute "*/5"
-  command "/etc/aws-scripts-mon/mon-put-instance-data.pl --disk-space-avail --disk-path=/"
+  command "/etc/aws-scripts-mon/mon-put-instance-data.pl --disk-space-util --disk-path=/"
 end
