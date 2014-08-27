@@ -1,5 +1,19 @@
 if platform?("debian","ubuntu")
-  package 'awscli'
+  Chef::Log.info("FreeSpaceMonitor: Download CLI Tools for Debian Based Distro")
+  remote_file "/tmp/awscli-bundle.zip" do
+    source "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip"
+  end
+
+  Chef::Log.info("FreeSpaceMonitor: Unzip AWS CLI Tools")
+  execute 'unzip tools' do
+    command "unzip awscli-bundle.zip"
+    cwd '/tmp' 
+  end 
+
+  execute 'install tools' do
+    command "./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws"
+    cwd '/tmp'
+  end
 end
 
 Chef::Log.info("FreeSpaceMonitor: Creating Alarm")
