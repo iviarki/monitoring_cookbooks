@@ -2,7 +2,7 @@ if platform?("debian","ubuntu")
   Chef::Log.info("FreeSpaceMonitor: Installing CLI tools on Debian Based Distro")
 
   remote_file "/tmp/get-pip.py" do
-    source "wget https://bootstrap.pypa.io/get-pip.py"
+    source "https://bootstrap.pypa.io/get-pip.py"
   end
 
   execute 'pip install' do
